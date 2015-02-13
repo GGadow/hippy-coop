@@ -12,15 +12,17 @@ requirements
 -------------
 a page for registering rooms and assigning rooms to members  
 . rooms table  
-. members table  
-. associate them  
+. members table 
+. purchases table  
+. associate them
+. members can change rooms
 . rspec test the association  
 . route for above page  
 . controller for above page  
 . view for above controller  
-. partial for a room line item  
+. partials, as you will
 . routes for creating rooms, members  
-. capybara test  
+. capybara tests
 . logo for the coop in a layout  
 
 a page for inputting the expenses each member paid
