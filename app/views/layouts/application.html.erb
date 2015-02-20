@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HippyCoop</title>
+  <title>Hippie Cooperative</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="container">
 
+    <div id="header">
+      <h1>Hippie Cooperative</h1>
+	  </div><!-- header -->
+	  <div id="content"><div class="padding">
 <%= yield %>
+	  </div></div><!-- content -->
+	  <div id="footer"><div class="padding">
+      Ruby on Rails assignment by Gregory Gadow; winter quarter 2015
+	  </div></div><!-- footer -->
 
+  </div><!-- container -->
 </body>
 </html>

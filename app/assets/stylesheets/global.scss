@@ -1,0 +1,106 @@
+$font-stack: Helvetica, sans-serif;
+
+
+* {
+  margin: 0;
+	padding: 0;
+	vertical-align: baseline;
+}
+
+a.as-button {
+}
+
+body {
+  background-image: image-url('vellum-gold-seamless-background.jpg');
+  font-family: $font-stack;
+}
+
+div.padding {
+  margin:0.5em;
+  background-color:transparent;
+}
+
+h1 {/* Used in banner */
+  color: #FFFFFF;
+  font-size: 2.5em;
+  margin-left:0.5em;
+  text-shadow: 2px 2px #888888;
+}
+
+h2 {/* Page header */
+}
+
+hr {
+  margin-bottom: 1em;
+}
+
+input[type=submit], a.as-button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius:6px;
+  text-decoration: none;
+  font-size: 0.9em;
+  color: #000000;
+  cursor: pointer;
+  border:none;
+  padding: 2px 4px;
+  border: solid 1px #CCCCCC;
+  background-color: #FCFCFC;
+}
+
+input[type=submit]:hover, a.as-button:hover {
+  border: solid 1px #000077;
+  background-color: #EEEEEE;
+}
+
+table {
+  border-collapse:collapse;
+  border:none;
+}
+
+td, th {
+  padding: 0.25em;
+  text-align: left;
+}
+
+th {
+  background-color: transparent;
+}
+
+th::after {
+  content: ":"
+}
+
+p {
+  margin-bottom: 1em;
+}
+
+#container {
+  background-color: #000077;
+  width: 900px;
+  overflow: auto;
+  margin: 40px auto 40px auto;
+	border-radius:20px;
+	box-shadow: 10px 10px 9px #2E0000;
+}
+
+#content {
+  background-color: #FFFFFF;
+  min-height: 300px;
+  overflow: auto;
+  width: 900px;
+}
+
+#footer {
+  background-color: #000077;
+  clear:both;
+  width: 100%;
+  color: #FFFFFF;
+  font-size: 0.9em;
+}
+
+#header {
+  width: 100%;
+  height: 272px;
+  background-image: image-url('gd_banner.jpg')
+}
