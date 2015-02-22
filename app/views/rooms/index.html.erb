@@ -1,0 +1,17 @@
+<h2>Rooms</h2>
+
+<table>
+  <tr>
+    <th>Room #</th>
+    <th>Rent</th>
+    <th>Resident</th>
+  </tr>
+<% @rooms.each do |room| %>
+  <tr>
+    <td><%= room.room_number %></td>
+    <td class="right"><%= number_to_currency room.rent %></td>
+    <td><%= if !room.resident.nil? then room.resident.name end %></td>
+  </tr>
+<% end %>
+</table>
+

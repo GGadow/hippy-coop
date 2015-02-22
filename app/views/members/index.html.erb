@@ -1,0 +1,15 @@
+<h2>Members</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Rent</th>
+  </tr>
+<% @members.each do |member| %>
+  <tr>
+    <td><%= member.name %></td>
+    <td class="right"><%= number_to_currency member.rent%></td>
+  </tr>
+<% end %>
+</table>
+

@@ -11,7 +11,7 @@ a.as-button {
 }
 
 body {
-  background-image: image-url('vellum-gold-seamless-background.jpg');
+  background-image: image-url('rough_canvasrepeating_background.jpg');
   font-family: $font-stack;
 }
 
@@ -61,10 +61,15 @@ table {
 td, th {
   padding: 0.25em;
   text-align: left;
+  border: solid 1px #000000;
+}
+
+td.right, th.right {
+  text-align: right;
 }
 
 th {
-  background-color: transparent;
+  background-color: #999999;
 }
 
 th::after {
@@ -73,6 +78,15 @@ th::after {
 
 p {
   margin-bottom: 1em;
+}
+
+ul.menu {
+  margin-left: 1em;
+  list-style-type: none;
+}
+
+ul.menu li {
+  padding:0.25em 0;
 }
 
 #container {
