@@ -1,0 +1,33 @@
+<%= form_for(@member) do |member| %>
+  <% if @member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@member.errors.count, "error") %> prohibited this member from being saved:</h2>
+
+      <ul>
+      <% @member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end #if @member.errrors.any? %>
+
+  <table class="input">
+    <tr>
+      <th><%= member.label :fname %></th>
+      <td><%= member.text_field :fname %></td>
+    </tr>
+    <tr>
+      <th><%= member.label :lname %></th>
+      <td><%= member.text_field :lname %></td>
+    </tr>
+    <tr>
+      <th><label for="_form_room">Room</label></th>
+      <td><select id="_form_room"><%= Room.available %></select></td>
+    </tr>
+    <tr>
+      <td><%= link_to 'Cancel', members_path, class: "as-button" %></td>
+      <td><%= member.submit "Add member" %></td>
+    </tr>
+  </table>
+
+<% end #form_for(@member) %>

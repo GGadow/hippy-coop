@@ -28,6 +28,11 @@ h1 {/* Used in banner */
 }
 
 h2 {/* Page header */
+  margin-bottom: 1em;
+}
+
+h3 {/* Page section headers */
+  margin-bottom: 0.75em;
 }
 
 hr {
@@ -56,6 +61,7 @@ input[type=submit]:hover, a.as-button:hover {
 table {
   border-collapse:collapse;
   border:none;
+  margin-bottom: 1em;
 }
 
 td, th {
@@ -72,8 +78,18 @@ th {
   background-color: #999999;
 }
 
-th::after {
-  content: ":"
+table.input {
+  border: none;
+}
+
+table.input td,
+table.input th {
+  background-color: transparent;
+  border: none;
+}
+
+table.input th::after {
+  content: ":";
 }
 
 p {

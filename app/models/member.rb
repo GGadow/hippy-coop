@@ -1,4 +1,5 @@
 class Member < ActiveRecord::Base
+  has_one :room
 
   def name
     "#{(fname || "")} #{(lname || "")}".strip
@@ -14,13 +15,13 @@ class Member < ActiveRecord::Base
     end
   end
 
-#  def room_number
-#    r = Room.find_by_resident(id)
-#    if r.empty?
-#      ""
-#    else
-#      r.room_number
-#    end
-#  end
+  def room_number
+    r = Room.find_by_resident(id)
+    if r.blank?
+      ""
+    else
+      r.room_number
+    end
+  end
 
 end

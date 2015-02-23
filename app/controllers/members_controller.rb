@@ -2,7 +2,9 @@ class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   def index
-    @members = Member.all
+    @members_all = Member.all
+    @members_active = Member.joins(:room).where("members.id == rooms.member_id")
+    @members_inactive = Member.joins("LEFT OUTER JOIN rooms ON rooms.member_id == members.id").where("rooms.member_id IS NULL")
   end
 
   def show
@@ -20,8 +22,13 @@ class MembersController < ApplicationController
 
     respond_to do |format|
       if @member.save
-        format.html {redirect_to members_path, notice: 'Member has been saved.'}
-        format.json {render :show, status: :created, location: @member}
+ #       if Room.update(room_num, @member.id) 
+ #         format.html {redirect_to members_path, notice: 'Member has been saved.'}
+ #         format.json {render :show, status: :created, location: @member}
+ #       else
+ #         format.html {render :new}
+ #         format.json {render json: @member.errors, status: :unprocessable_entity}
+ #       end
       else
         format.html {render :new}
         format.json {render json: @member.errors, status: :unprocessable_entity}

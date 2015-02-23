@@ -1,15 +1,36 @@
 <h2>Members</h2>
 
+<h3>Active members</h3>
 <table>
   <tr>
     <th>Name</th>
+    <th>Room</th>
     <th>Rent</th>
   </tr>
-<% @members.each do |member| %>
+<% @members_active.each do |member| %>
   <tr>
     <td><%= member.name %></td>
+    <td><%= member.room_number %></td>
     <td class="right"><%= number_to_currency member.rent%></td>
   </tr>
 <% end %>
 </table>
 
+<hr />
+
+<h3>Inactive members</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+<% @members_inactive.each do |member| %>
+  <tr>
+    <td><%= member.name %></td>
+  </tr>
+<% end %>
+</table>
+
+<hr />
+
+<%= link_to 'New Member', new_member_path %>
