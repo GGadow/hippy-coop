@@ -20,10 +20,10 @@
       <th><%= member.label :lname %></th>
       <td><%= member.text_field :lname %></td>
     </tr>
-    <tr>
-      <th><label for="_form_room">Room</label></th>
-      <td><select id="_form_room"><%= Room.available %></select></td>
-    </tr>
+    <tr><%= fields_for :room do |room| %>
+      <th><%= room.label :room_number %></th>
+      <td><%= select("room", "room_number", Room.available) %></td>
+    <% end %></tr>
     <tr>
       <td><%= link_to 'Cancel', members_path, class: "as-button" %></td>
       <td><%= member.submit "Add member" %></td>

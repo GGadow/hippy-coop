@@ -19,16 +19,17 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
+    @room_num = params[:room][:room_number]
 
     respond_to do |format|
       if @member.save
- #       if Room.update(room_num, @member.id) 
- #         format.html {redirect_to members_path, notice: 'Member has been saved.'}
- #         format.json {render :show, status: :created, location: @member}
- #       else
- #         format.html {render :new}
- #         format.json {render json: @member.errors, status: :unprocessable_entity}
- #       end
+        if Room.update(@room_num, @member.id) 
+          format.html {redirect_to members_path, notice: 'Member has been saved.'}
+          format.json {render :show, status: :created, location: @member}
+        else
+          format.html {render :new}
+          format.json {render json: @member.errors, status: :unprocessable_entity}
+        end
       else
         format.html {render :new}
         format.json {render json: @member.errors, status: :unprocessable_entity}
@@ -49,6 +50,6 @@ class MembersController < ApplicationController
     end
 
     def member_params
-      params.require(:member).permit(:fname, :lname)
+      params.require(:member).permit(:fname, :lname, :room_attributes => [:room_number])
     end
 end

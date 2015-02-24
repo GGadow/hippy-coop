@@ -10,15 +10,31 @@ class Room < ActiveRecord::Base
   end
 
   def self.update(room_num, member)
+    r = Room.find_by room_number: room_num
+    r.member_id = member
+    r.save
   end
 
   def self.available
-    @rms = "<option value=''></option>"
+    @rms = Array.new
 
-    self.empty do |rm|
-      @rms += "<option value='#{rm.room_number}'>#{rm.room_number}</option>"
-    end  
-    @rms
+    src = Array.new
+    src << ""
+    src << ""
+    @rms << src
+  
+    self.empty.each do |rm|
+      src = Array.new
+      src << rm.room_number
+      src << rm.room_number
+      @rms << src
+    end
+
+    @sorted = @rms.sort_by do |i|
+      i.first
+    end
+
+    @sorted
   end
 
   def resident
