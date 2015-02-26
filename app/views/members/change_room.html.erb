@@ -1,0 +1,32 @@
+<h2>Members</h2>
+
+<h3>Change room</h3>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Room</th>
+    <th>Change room</th>
+  </tr>
+<% @members_active.each do |member| %>
+  <tr>
+    <td><%= member.name %></td>
+    <td><%= member.room_number %></td>
+    <td><%= fields_for :room do |room| %>
+      <%= select("room[#{member.id}]", "room_number", Room.options_all) %>
+    <% end %></td>
+  </tr>
+<% end %>
+<% @members_inactive.each do |member| %>
+  <tr>
+    <td><%= member.name %></td>
+    <td><%= member.room_number %></td>
+    <td><%= fields_for :room do |room| %>
+      <%= select("room[#{member.id}]", "room_number", Room.options_all) %>
+    <% end %></td>  </tr>
+<% end %>
+
+</table>
+
+<%= submit_tag "Update", :controller => "member", :action => "change_room" %>
+

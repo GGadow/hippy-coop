@@ -6,15 +6,23 @@
     <th>Name</th>
     <th>Room</th>
     <th>Rent</th>
+    <th>Owed</th>
+    <th></th>
   </tr>
 <% @members_active.each do |member| %>
   <tr>
     <td><%= member.name %></td>
     <td><%= member.room_number %></td>
-    <td class="right"><%= number_to_currency member.rent%></td>
+    <td class="right"><%= number_to_currency member.rent %></td>
+    <td class="right"><%= number_to_currency member.owe %></td>
+    <td><%= link_to "File purchase", "#{purchases_path}?member=#{member.id}" %></td>
   </tr>
 <% end %>
 </table>
+
+<p>"Owed" column shows rent minus household purchases made this month.</p>
+
+<p><%= link_to 'Change rooms', change_room_members_path %></p>
 
 <hr />
 

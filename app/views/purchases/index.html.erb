@@ -1,0 +1,49 @@
+<h2>Purchases by <%= @member.name %></h2>
+
+<h3>This month: <%= General.this_month_name %></h3>
+<% 
+  @p = Purchase.purchases_by(@member.id, Time.now.month)
+  if @p.any? %>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Amount</th>
+  </tr>
+
+<% @p.each do |p| %>
+  <tr>
+    <td><%= p.purchase_date %></td>
+    <td><%= p.description %></td>
+    <td class="right"><%= number_to_currency p.amount %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %> <p>No purchases found.</p><% end %>
+
+<p><%= link_to 'File purchase', "#{new_purchase_path}?member=#{@member.id}" %></p>
+
+<h3>Last month: <%= General.last_month_name %></h3>
+
+<% 
+  @p = Purchase.purchases_by(@member.id, Time.now.month - 1)
+  if @p.any? %>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Amount</th>
+  </tr>
+<% @p.each do |p| %>
+  <tr>
+    <td><%= p.purchase_date %></td>
+    <td><%= p.description %></td>
+    <td class="right"><%= number_to_currency p.amount %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %> <p>No purchases found.</p><% end %>

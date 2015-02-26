@@ -15,7 +15,29 @@ class Room < ActiveRecord::Base
     r.save
   end
 
-  def self.available
+  def self.options_all
+    @rms = Array.new
+
+    src = Array.new
+    src << ""
+    src << ""
+    @rms << src
+
+   Room.all.each do |rm|
+      src = Array.new
+      src = rm.room_number
+      src = rm.room_number
+      @rms << src
+    end
+
+    @sorted = @rms.sort_by do |i|
+      i.first
+    end
+
+    @sorted
+  end
+
+  def self.options_available
     @rms = Array.new
 
     src = Array.new

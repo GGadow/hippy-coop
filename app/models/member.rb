@@ -1,6 +1,11 @@
 class Member < ActiveRecord::Base
   has_one :room
 
+  def owe
+    puts Purchase.rebate(id, Time.now.month)
+    rent - Purchase.rebate(id, Time.now.month)
+  end
+
   def name
     "#{(fname || "")} #{(lname || "")}".strip
   end
@@ -10,7 +15,6 @@ class Member < ActiveRecord::Base
     if r.blank?
       0.00
     else
-      #TODO: replace with calculation for purchases
        r.rent
     end
   end

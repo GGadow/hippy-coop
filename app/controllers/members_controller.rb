@@ -1,10 +1,8 @@
 class MembersController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_member, only: [:edit, :update, :destroy]
 
   def index
-    @members_all = Member.all
-    @members_active = Member.joins(:room).where("members.id == rooms.member_id")
-    @members_inactive = Member.joins("LEFT OUTER JOIN rooms ON rooms.member_id == members.id").where("rooms.member_id IS NULL")
+    init
   end
 
   def show
@@ -43,6 +41,13 @@ class MembersController < ApplicationController
   def destroy
   end
 
+  def change_room
+puts "change_room"
+    init
+#    data = ActiveSupport::JSON.decode(request.body.to_json)
+#    puts data
+  end
+
   private
  
     def set_member
@@ -51,5 +56,11 @@ class MembersController < ApplicationController
 
     def member_params
       params.require(:member).permit(:fname, :lname, :room_attributes => [:room_number])
+    end
+
+    def init
+      @members_all = Member.all
+      @members_active = Member.joins(:room).where("members.id == rooms.member_id")
+      @members_inactive = Member.joins("LEFT OUTER JOIN rooms ON rooms.member_id == members.id").where("rooms.member_id IS NULL")
     end
 end

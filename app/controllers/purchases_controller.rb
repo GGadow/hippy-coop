@@ -2,13 +2,33 @@ class PurchasesController < ApplicationController
   before_action :set_purchase, only: [:show, :edit, :update, :destroy]
 
   def index
-    @purchase = Purchase.all
+    id = params[:member]
+    if !id.nil? 
+      begin
+        @member = Member.find(id)
+      rescue
+        redirect_to not_found_purchases_path
+      end
+    else
+      redirect_to not_found_purchases_path
+    end
   end
 
   def show
   end
 
   def new
+    id = params[:member]
+    if !id.nil?
+      begin
+        @member = Member.find(id)
+      rescue
+        redirect_to not_found_purchases_path
+      end
+    else
+      redirect_to not_found_purchases_path
+    end
+      
     @purchase = Purchase.new
   end
 
@@ -33,6 +53,10 @@ class PurchasesController < ApplicationController
   end
 
   def destroy
+  end
+
+  def purchases_by(member_id)
+    
   end
 
   private

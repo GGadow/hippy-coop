@@ -22,7 +22,7 @@
     </tr>
     <tr><%= fields_for :room do |room| %>
       <th><%= room.label :room_number %></th>
-      <td><%= select("room", "room_number", Room.available) %></td>
+      <td><%= select("room", "room_number", Room.options_available) %></td>
     <% end %></tr>
     <tr>
       <td><%= link_to 'Cancel', members_path, class: "as-button" %></td>
