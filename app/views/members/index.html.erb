@@ -1,5 +1,7 @@
 <h2>Members</h2>
 
+<p id="notice"><%= notice %></p>
+
 <h3>Active members</h3>
 <table>
   <tr>
@@ -15,7 +17,7 @@
     <td><%= member.room_number %></td>
     <td class="right"><%= number_to_currency member.rent %></td>
     <td class="right"><%= number_to_currency member.owe %></td>
-    <td><%= link_to "File purchase", "#{purchases_path}?member=#{member.id}" %></td>
+    <td><%= link_to "Purchases", "#{purchases_path}?member=#{member.id}" %></td>
   </tr>
 <% end %>
 </table>

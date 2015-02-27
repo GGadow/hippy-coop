@@ -11,8 +11,12 @@ class Room < ActiveRecord::Base
 
   def self.update(room_num, member)
     r = Room.find_by room_number: room_num
-    r.member_id = member
-    r.save
+    if !r.nil?
+      r.member_id = member
+      r.save
+    else
+      true 
+    end
   end
 
   def self.options_all

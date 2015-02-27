@@ -16,19 +16,17 @@ class MembersController < ApplicationController
   end
 
   def create
+    init
     @member = Member.new(member_params)
     @room_num = params[:room][:room_number]
 
     respond_to do |format|
       if @member.save
-        if Room.update(@room_num, @member.id) 
-          format.html {redirect_to members_path, notice: 'Member has been saved.'}
-          format.json {render :show, status: :created, location: @member}
-        else
-          format.html {render :new}
-          format.json {render json: @member.errors, status: :unprocessable_entity}
-        end
+        Room.update(@room_num, @member.id) 
+        format.html {render :index}
+        format.json {render :show, status: :created, location: @member}
       else
+puts "Member not saved."
         format.html {render :new}
         format.json {render json: @member.errors, status: :unprocessable_entity}
       end
@@ -42,8 +40,8 @@ class MembersController < ApplicationController
   end
 
   def change_room
-puts "change_room"
     init
+    @member = Member.new
 #    data = ActiveSupport::JSON.decode(request.body.to_json)
 #    puts data
   end

@@ -18,6 +18,8 @@ Room.create(room_number: "A", rent: 480, member_id: @memberA.id)
 Room.create(room_number: "B", rent: 560, member_id: @memberB.id)
 Room.create(room_number: "C", rent: 490, member_id: @memberC.id)
 Room.create(room_number: "D", rent: 540)
+Room.create(room_number: "E", rent: 540)
+Room.create(room_number: "F", rent: 540)
 
 #Add some purchases
 

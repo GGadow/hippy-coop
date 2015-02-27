@@ -2,6 +2,8 @@
 
 <h3>Change room</h3>
 
+<%= form_for @member do |m| %>
+
 <table>
   <tr>
     <th>Name</th>
@@ -29,4 +31,6 @@
 </table>
 
 <%= submit_tag "Update", :controller => "member", :action => "change_room" %>
+
+<% end %>
 
